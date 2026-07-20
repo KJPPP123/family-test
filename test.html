@@ -1,0 +1,413 @@
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(145deg, #fce4b8 0%, #f8b4a2 100%);
+    padding: 20px;
+  }
+  .container {
+    max-width: 500px;
+    width: 100%;
+    background: rgba(255, 248, 235, 0.85);
+    backdrop-filter: blur(16px);
+    border-radius: 40px;
+    padding: 28px 20px 32px;
+    border: 1px solid rgba(255, 215, 175, 0.6);
+    box-shadow: 0 16px 48px rgba(180, 100, 60, 0.2);
+  }
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #5a3e2b;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  h1 small {
+    font-size: 14px;
+    font-weight: 400;
+    color: #8b6b50;
+    background: rgba(255,215,175,0.4);
+    padding: 2px 14px;
+    border-radius: 30px;
+  }
+  .sub {
+    text-align: center;
+    color: #7a5f48;
+    font-size: 13px;
+    margin: 4px 0 20px;
+    opacity: 0.8;
+  }
+  .progress-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .track {
+    flex: 1;
+    height: 6px;
+    background: rgba(200, 160, 130, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #e8a87c, #d4846a);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+  }
+  .counter {
+    font-size: 13px;
+    font-weight: 600;
+    color: #5a3e2b;
+    background: rgba(255,215,175,0.5);
+    padding: 2px 14px;
+    border-radius: 30px;
+    white-space: nowrap;
+  }
+  .q-text {
+    font-size: 19px;
+    font-weight: 600;
+    color: #3f2c1e;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    min-height: 3.2rem;
+    padding: 0 2px;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .opt {
+    background: rgba(255, 235, 215, 0.6);
+    border: 1.5px solid rgba(200, 160, 130, 0.3);
+    border-radius: 50px;
+    padding: 12px 18px;
+    font-size: 15px;
+    color: #3f2c1e;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .opt:active { transform: scale(0.97); }
+  .opt .letter {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(200, 160, 130, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    color: #5a3e2b;
+    flex-shrink: 0;
+  }
+  .opt.selected {
+    background: #f5d5b8;
+    border-color: #c28a6a;
+    box-shadow: 0 2px 12px rgba(180, 100, 60, 0.15);
+  }
+  .btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 50px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #c28a6a, #d4846a);
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(180, 100, 60, 0.25);
+  }
+  .btn:active { transform: scale(0.96); opacity: 0.9; }
+  .btn:disabled {
+    opacity: 0.5;
+    transform: none;
+    pointer-events: none;
+  }
+  .result-box {
+    margin-top: 20px;
+    padding: 30px 20px 24px;
+    background: rgba(255, 235, 215, 0.6);
+    border-radius: 28px;
+    text-align: center;
+    display: none;
+    border: 1px solid rgba(200, 160, 130, 0.3);
+  }
+  .result-box .role {
+    font-size: 38px;
+    font-weight: 800;
+    color: #3f2c1e;
+    margin: 8px 0 2px;
+    letter-spacing: 2px;
+  }
+  .result-box .label {
+    font-size: 16px;
+    color: #8b6b50;
+    font-weight: 500;
+  }
+  .result-box .sub-info {
+    font-size: 14px;
+    color: #7a5f48;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+  .reset-btn {
+    margin-top: 18px;
+    background: rgba(200, 160, 130, 0.3);
+    color: #5a3e2b;
+    box-shadow: none;
+    font-size: 14px;
+  }
+  .reset-btn:active { transform: scale(0.96); }
+  .footnote {
+    text-align: center;
+    font-size: 11px;
+    color: #a88872;
+    margin-top: 16px;
+    opacity: 0.7;
+  }
+</style>
+
+<div class="container" id="app">
+  <h1>
+    📖 测测你是<br>家庭教师里的谁
+    <small>by 柯基胖屁屁</small>
+  </h1>
+  <div class="sub">4道题 · 看看你的角色契合度</div>
+
+  <div class="progress-area">
+    <div class="track"><div class="fill" id="fill"></div></div>
+    <span class="counter" id="counter">1/4</span>
+  </div>
+
+  <div class="q-text" id="qText">加载中...</div>
+  <div class="options" id="options"></div>
+
+  <button class="btn" id="nextBtn">下一题 →</button>
+
+  <div class="result-box" id="resultBox">
+    <div class="label">✨ 你是</div>
+    <div class="role" id="roleDisplay">??</div>
+    <div class="sub-info" id="extraInfo"></div>
+    <button class="btn reset-btn" id="resetBtn">🔄 重新测试</button>
+  </div>
+  <div class="footnote">A/B/C → 1 &nbsp;·&nbsp; D/E/F → 2</div>
+</div>
+
+<script>
+  // ---------- 4道原题（选项分开存储：字母 + 内容） ----------
+  const questions = [
+    {
+      q: "棒球场上，你最想守哪个位置？",
+      options: [
+        { label: "A", text: "投手" },
+        { label: "B", text: "捕手" },
+        { label: "C", text: "啦啦队" },
+        { label: "D", text: "一垒手（接球）" },
+        { label: "E", text: "外野手（看风景和偶尔追球）" },
+        { label: "F", text: "游击手" }
+      ]
+    },
+    {
+      q: "十代月今天穿了哪条内裤？",
+      options: [
+        { label: "A", text: "泳裤" },
+        { label: "B", text: "绿色格子裤" },
+        { label: "C", text: "白底火焰裤" },
+        { label: "D", text: "蓝色星星裤" },
+        { label: "E", text: "兜裆布" },
+        { label: "F", text: "凤梨内裤" }
+      ]
+    },
+    {
+      q: "一位神秘男子拿着波维诺家族的盒子给你签收，你会？",
+      options: [
+        { label: "A", text: "先检查一下" },
+        { label: "B", text: "询问要不要付快递费" },
+        { label: "C", text: "先拿着，可能有武器或钱" },
+        { label: "D", text: "直接打开，相信对方不会害我" },
+        { label: "E", text: "给错人了！担心对方着急，追了上去" },
+        { label: "F", text: "太沉了，别人帮我开吧" }
+      ]
+    },
+    {
+      q: "炸弹上有红、蓝、黄三根线，必须在10秒内剪下一根。你会？",
+      options: [
+        { label: "A", text: "快速判断一下再剪" },
+        { label: "B", text: "这种东西当然要问狱寺啊" },
+        { label: "C", text: "猜对方心理再剪" },
+        { label: "D", text: "凭直觉就是它了" },
+        { label: "E", text: "来不及了随便剪" },
+        { label: "F", text: "直接跑了好吧" }
+      ]
+    }
+  ];
+
+  // ---------- 角色映射表 ----------
+  const roleMap = {
+    "1111": ["斯库瓦罗"],
+    "1112": ["可乐尼洛", "夏马尔", "贝尔·菲戈尔"],
+    "1121": ["沃田奈奈"],
+    "1122": ["笹川了平", "路斯利亚", "蓝波"],
+    "1211": ["Reborn", "Xanxus"],
+    "1212": ["白兰", "D·斯佩多"],
+    "1221": ["迪诺"],
+    "1222": ["山本武", "三浦春"],
+    "2111": ["云雀恭弥", "拉尔", "伽马"],
+    "2112": ["狱寺隼人"],
+    "2121": ["了平", "京子"],
+    "2122": ["沃田纲吉"],
+    "2211": ["六道骸", "威尔第", "川平"],
+    "2212": ["斯帕纳", "弗兰", "玛蒙", "将尼二"],
+    "2221": ["尤尼", "乔托", "风太", "入江正一"],
+    "2222": ["库洛姆", "古里炎真"]
+  };
+
+  // 提取所有角色条目
+  const allRoleEntries = [];
+  for (const [code, names] of Object.entries(roleMap)) {
+    for (const name of names) {
+      allRoleEntries.push({ code, name });
+    }
+  }
+
+  // ---------- 状态 ----------
+  let current = 0;
+  let answers = [];
+  let codeDigits = [];
+
+  const qText = document.getElementById('qText');
+  const optionsDiv = document.getElementById('options');
+  const nextBtn = document.getElementById('nextBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const fill = document.getElementById('fill');
+  const counter = document.getElementById('counter');
+  const resultBox = document.getElementById('resultBox');
+  const roleDisplay = document.getElementById('roleDisplay');
+  const extraInfo = document.getElementById('extraInfo');
+
+  // ---------- 计算最佳匹配角色 ----------
+  function findBestMatch(userCode) {
+    let bestMatches = [];
+    let maxMatchCount = -1;
+
+    for (const entry of allRoleEntries) {
+      let matchCount = 0;
+      for (let i = 0; i < 4; i++) {
+        if (userCode[i] === entry.code[i]) matchCount++;
+      }
+      if (matchCount > maxMatchCount) {
+        maxMatchCount = matchCount;
+        bestMatches = [entry.name];
+      } else if (matchCount === maxMatchCount) {
+        bestMatches.push(entry.name);
+      }
+    }
+
+    return bestMatches[Math.floor(Math.random() * bestMatches.length)];
+  }
+
+  // ---------- 渲染当前题 ----------
+  function render() {
+    if (current >= questions.length) {
+      showResult();
+      return;
+    }
+
+    const q = questions[current];
+    qText.textContent = q.q;
+    optionsDiv.innerHTML = '';
+
+    q.options.forEach((opt, idx) => {
+      const div = document.createElement('div');
+      div.className = 'opt';
+      div.innerHTML = `<span class="letter">${opt.label}</span><span>${opt.text}</span>`;
+      div.dataset.idx = idx;
+      div.onclick = () => selectOption(idx);
+      optionsDiv.appendChild(div);
+    });
+
+    if (answers[current] !== undefined) {
+      const btns = optionsDiv.querySelectorAll('.opt');
+      btns[answers[current]]?.classList.add('selected');
+    }
+
+    fill.style.width = ((current / questions.length) * 100) + '%';
+    counter.textContent = `${current+1}/${questions.length}`;
+    resultBox.style.display = 'none';
+    nextBtn.style.display = 'block';
+    nextBtn.disabled = (answers[current] === undefined);
+  }
+
+  // ---------- 选择选项 ----------
+  function selectOption(idx) {
+    answers[current] = idx;
+    // idx 0,1,2 → 1；3,4,5 → 2
+    codeDigits[current] = idx < 3 ? 1 : 2;
+
+    document.querySelectorAll('.opt').forEach((el, i) => {
+      el.classList.toggle('selected', i === idx);
+    });
+    nextBtn.disabled = false;
+  }
+
+  // ---------- 显示结果 ----------
+  function showResult() {
+    const userCode = codeDigits.join('');
+    const result = findBestMatch(userCode);
+
+    qText.textContent = '🎉 测试完成！';
+    optionsDiv.innerHTML = '';
+    nextBtn.style.display = 'none';
+    resultBox.style.display = 'block';
+
+    roleDisplay.textContent = result;
+
+    const optLabels = answers.map(idx => String.fromCharCode(65 + idx));
+    extraInfo.textContent = `你的选择：${optLabels.join(' · ')}`;
+
+    fill.style.width = '100%';
+    counter.textContent = '完成';
+  }
+
+  // ---------- 下一题 ----------
+  nextBtn.onclick = () => {
+    if (answers[current] === undefined) {
+      alert('请先选择一个选项～');
+      return;
+    }
+    current++;
+    if (current >= questions.length) {
+      showResult();
+    } else {
+      render();
+    }
+  };
+
+  // ---------- 重置 ----------
+  resetBtn.onclick = () => {
+    current = 0;
+    answers = [];
+    codeDigits = [];
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // ---------- 启动 ----------
+  render();
+</script>
