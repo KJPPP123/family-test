@@ -11,35 +11,55 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(145deg, #fce4b8 0%, #f8b4a2 100%);
     padding: 20px;
+    /* 外框：全员.jpg */
+    background-image: url('https://kjppp123.github.io/family-test/全员.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
+  /* 外框半透明遮罩，让图案更融合 */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 0;
+  }
+
   .container {
+    position: relative;
+    z-index: 1;
     max-width: 500px;
     width: 100%;
-    background: rgba(255, 248, 235, 0.85);
-    backdrop-filter: blur(16px);
+    /* 内框：黑粉主题（黑多粉少） */
+    background: rgba(18, 10, 20, 0.92);
+    backdrop-filter: blur(12px);
     border-radius: 40px;
     padding: 28px 20px 32px;
-    border: 1px solid rgba(255, 215, 175, 0.6);
-    box-shadow: 0 16px 48px rgba(180, 100, 60, 0.2);
+    border: 1px solid rgba(233, 30, 99, 0.25);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 60px rgba(233, 30, 99, 0.06);
   }
-  h1 { font-size: 24px; font-weight: 700; color: #5a3e2b; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
-  h1 small { font-size: 14px; font-weight: 400; color: #8b6b50; background: rgba(255,215,175,0.4); padding: 2px 14px; border-radius: 30px; }
-  .sub { text-align: center; color: #7a5f48; font-size: 13px; margin: 4px 0 20px; opacity: 0.8; }
+  h1 { font-size: 24px; font-weight: 700; color: #f5e6f0; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+  h1 small { font-size: 14px; font-weight: 400; color: #b88aaa; background: rgba(233, 30, 99, 0.2); padding: 2px 14px; border-radius: 30px; }
+  .sub { text-align: center; color: #b088aa; font-size: 13px; margin: 4px 0 20px; opacity: 0.8; }
   .progress-area { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
-  .track { flex: 1; height: 6px; background: rgba(200, 160, 130, 0.3); border-radius: 10px; overflow: hidden; }
-  .fill { height: 100%; width: 0%; background: linear-gradient(90deg, #e8a87c, #d4846a); border-radius: 10px; transition: width 0.4s ease; }
-  .counter { font-size: 13px; font-weight: 600; color: #5a3e2b; background: rgba(255,215,175,0.5); padding: 2px 14px; border-radius: 30px; white-space: nowrap; }
-  .q-text { font-size: 19px; font-weight: 600; color: #3f2c1e; line-height: 1.5; margin-bottom: 20px; min-height: 3.2rem; padding: 0 2px; }
+  .track { flex: 1; height: 6px; background: rgba(200, 150, 180, 0.2); border-radius: 10px; overflow: hidden; }
+  .fill { height: 100%; width: 0%; background: linear-gradient(90deg, #e91e63, #9c27b0); border-radius: 10px; transition: width 0.4s ease; }
+  .counter { font-size: 13px; font-weight: 600; color: #f5e6f0; background: rgba(233, 30, 99, 0.25); padding: 2px 14px; border-radius: 30px; white-space: nowrap; }
+  .q-text { font-size: 19px; font-weight: 600; color: #f5e6f0; line-height: 1.5; margin-bottom: 20px; min-height: 3.2rem; padding: 0 2px; }
   .options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
   .opt {
-    background: rgba(255, 235, 215, 0.6);
-    border: 1.5px solid rgba(200, 160, 130, 0.3);
+    background: rgba(40, 20, 40, 0.6);
+    border: 1px solid rgba(200, 150, 180, 0.15);
     border-radius: 50px;
     padding: 12px 18px;
     font-size: 15px;
-    color: #3f2c1e;
+    color: #f0e0ee;
     cursor: pointer;
     transition: all 0.15s;
     display: flex;
@@ -50,16 +70,24 @@
   .opt .letter {
     width: 28px; height: 28px;
     border-radius: 50%;
-    background: rgba(200, 160, 130, 0.3);
+    background: rgba(200, 150, 180, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
     font-size: 13px;
-    color: #5a3e2b;
+    color: #d4c0d0;
     flex-shrink: 0;
   }
-  .opt.selected { background: #f5d5b8; border-color: #c28a6a; box-shadow: 0 2px 12px rgba(180, 100, 60, 0.15); }
+  .opt.selected {
+    background: rgba(233, 30, 99, 0.25);
+    border-color: #e91e63;
+    box-shadow: 0 0 20px rgba(233, 30, 99, 0.1);
+  }
+  .opt.selected .letter {
+    background: #e91e63;
+    color: #fff;
+  }
   .btn {
     width: 100%;
     padding: 14px;
@@ -68,51 +96,51 @@
     font-size: 17px;
     font-weight: 600;
     color: #fff;
-    background: linear-gradient(135deg, #c28a6a, #d4846a);
+    background: linear-gradient(135deg, #c2185b, #6a1b9a);
     cursor: pointer;
     transition: all 0.2s;
-    box-shadow: 0 4px 16px rgba(180, 100, 60, 0.25);
+    box-shadow: 0 4px 16px rgba(233, 30, 99, 0.2);
   }
   .btn:active { transform: scale(0.96); opacity: 0.9; }
-  .btn:disabled { opacity: 0.5; transform: none; pointer-events: none; }
+  .btn:disabled { opacity: 0.4; transform: none; pointer-events: none; }
   .result-box {
     margin-top: 20px;
-    padding: 24px 20px 24px;
-    background: rgba(255, 235, 215, 0.6);
+    padding: 24px 20px 20px;
+    background: rgba(30, 15, 30, 0.7);
     border-radius: 28px;
     text-align: center;
     display: none;
-    border: 1px solid rgba(200, 160, 130, 0.3);
-  }
-  .result-box .role-name {
-    font-size: 38px;
-    font-weight: 800;
-    color: #3f2c1e;
-    margin: 4px 0 12px;
-    letter-spacing: 2px;
-  }
-  .result-box .role-desc {
-    font-size: 15px;
-    color: #4a3a2a;
-    line-height: 1.7;
-    text-align: left;
-    background: rgba(255,248,235,0.5);
-    padding: 16px 18px;
-    border-radius: 20px;
-    margin-top: 4px;
-    white-space: pre-wrap;
-    word-break: break-word;
+    border: 1px solid rgba(233, 30, 99, 0.15);
   }
   .result-box .role-img {
     width: 120px;
     height: 120px;
     object-fit: cover;
     border-radius: 50%;
-    border: 3px solid #c28a6a;
+    border: 3px solid #e91e63;
     display: none;
-    margin: 0 auto 12px;
+    margin: 0 auto 10px;
+    box-shadow: 0 4px 20px rgba(233, 30, 99, 0.2);
   }
-  .reset-btn { margin-top: 18px; background: rgba(200, 160, 130, 0.3); color: #5a3e2b; box-shadow: none; font-size: 14px; }
+  .result-box .role-name {
+    font-size: 36px;
+    font-weight: 800;
+    color: #f5e6f0;
+    margin: 4px 0 10px;
+    letter-spacing: 2px;
+  }
+  .result-box .role-desc {
+    font-size: 15px;
+    color: #d0b8cc;
+    line-height: 1.7;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 14px 16px;
+    border-radius: 20px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .reset-btn { margin-top: 16px; background: rgba(200, 150, 180, 0.15); color: #d0b8cc; box-shadow: none; }
   .reset-btn:active { transform: scale(0.96); }
 </style>
 
@@ -135,121 +163,102 @@
 </div>
 
 <script>
-  // ---------- 4道原题 ----------
+  // ---------- 4道题 ----------
   const questions = [
     {
       q: "棒球场上，你最想守哪个位置？",
-      options: [
-        { label: "A", text: "投手" },
-        { label: "B", text: "捕手" },
-        { label: "C", text: "啦啦队" },
-        { label: "D", text: "一垒手（接球）" },
-        { label: "E", text: "外野手（看风景和偶尔追球）" },
-        { label: "F", text: "游击手" }
-      ]
+      options: ["A 投手", "B 捕手", "C 啦啦队", "D 一垒手（接球）", "E 外野手（看风景和偶尔追球）", "F 游击手"]
     },
     {
       q: "十代月今天穿了哪条内裤？",
-      options: [
-        { label: "A", text: "泳裤" },
-        { label: "B", text: "绿色格子裤" },
-        { label: "C", text: "白底火焰裤" },
-        { label: "D", text: "蓝色星星裤" },
-        { label: "E", text: "兜裆布" },
-        { label: "F", text: "凤梨内裤" }
-      ]
+      options: ["A 泳裤", "B 绿色格子裤", "C 白底火焰裤", "D 蓝色星星裤", "E 兜裆布", "F 凤梨内裤"]
     },
     {
       q: "一位神秘男子拿着波维诺家族的盒子给你签收，你会？",
-      options: [
-        { label: "A", text: "先检查一下" },
-        { label: "B", text: "询问要不要付快递费" },
-        { label: "C", text: "先拿着，可能有武器或钱" },
-        { label: "D", text: "直接打开，相信对方不会害我" },
-        { label: "E", text: "给错人了！担心对方着急，追了上去" },
-        { label: "F", text: "太沉了，别人帮我开吧" }
-      ]
+      options: ["A 先检查一下", "B 询问要不要付快递费", "C 先拿着，可能有武器或钱", "D 直接打开，相信对方不会害我", "E 给错人了！担心对方着急，追了上去", "F 太沉了，别人帮我开吧"]
     },
     {
       q: "炸弹上有红、蓝、黄三根线，必须在10秒内剪下一根。你会？",
-      options: [
-        { label: "A", text: "快速判断一下再剪" },
-        { label: "B", text: "这种东西当然要问狱寺啊" },
-        { label: "C", text: "猜对方心理再剪" },
-        { label: "D", text: "凭直觉就是它了" },
-        { label: "E", text: "来不及了随便剪" },
-        { label: "F", text: "直接跑了好吧" }
-      ]
+      options: ["A 快速判断一下再剪", "B 这种东西当然要问狱寺啊", "C 猜对方心理再剪", "D 凭直觉就是它了", "E 来不及了随便剪", "F 直接跑了好吧"]
     }
   ];
 
-  // ---------- 角色映射表（已修正山本武和三浦春） ----------
+  // ---------- 角色映射表 ----------
   const roleMap = {
-    "1111": ["斯库瓦罗"],
-    "1112": ["可乐尼洛", "夏马尔", "贝尔·菲戈尔"],
-    "1121": ["沃田奈奈"],
-    "1122": ["笹川了平", "路斯利亚", "蓝波"],
-    "1211": ["Reborn", "Xanxus"],
-    "1212": ["白兰", "D·斯佩多"],
-    "1221": ["迪诺"],
-    "1222": ["三浦春"],          // ✅ 已修正：CEEE → 三浦春
-    "2111": ["云雀恭弥", "拉尔·米尔奇", "伽马"],
-    "2112": ["狱寺隼人"],
-    "2121": ["了平", "京子"],
-    "2122": ["山本武"],          // ✅ 已修正：DADD → 山本武
-    "2211": ["六道骸", "威尔第", "川平"],
-    "2212": ["斯帕纳", "弗兰", "玛蒙", "将尼二"],
-    "2221": ["尤尼", "乔托", "风太", "入江正一"],
-    "2222": ["库洛姆", "古里炎真"]
+    "1111": [{ name: "斯库瓦罗", letters: "AACA" }],
+    "1112": [{ name: "可乐尼洛", letters: "EAAA" }, { name: "夏马尔", letters: "BBAF" }, { name: "贝尔·菲戈尔", letters: "FCCC" }],
+    "1121": [{ name: "沃田奈奈", letters: "CBDE" }],
+    "1122": [{ name: "笹川了平", letters: "ACDD" }, { name: "路斯利亚", letters: "CDDD" }, { name: "蓝波", letters: "ACFF" }],
+    "1211": [{ name: "Reborn", letters: "BECC" }, { name: "Xanxus", letters: "ACCA" }],
+    "1212": [{ name: "白兰", letters: "BDCC" }, { name: "D·斯佩多", letters: "BFCF" }],
+    "1221": [{ name: "迪诺", letters: "BCFB" }],
+    "1222": [{ name: "山本武", letters: "EADD" }, { name: "三浦春", letters: "CEEE" }],
+    "2111": [{ name: "云雀恭弥", letters: "F?AA" }, { name: "拉尔", letters: "BAAA" }, { name: "伽马", letters: "DBAA" }],
+    "2112": [{ name: "狱寺隼人", letters: "FCAA" }],
+    "2121": [{ name: "了平", letters: "EBEA" }, { name: "京子", letters: "EDEA" }],
+    "2122": [{ name: "沢田纲吉", letters: "EDED" }],
+    "2211": [{ name: "六道骸", letters: "FFCC" }, { name: "威尔第", letters: "EBAA" }, { name: "川平", letters: "EDAA" }],
+    "2212": [{ name: "斯帕纳", letters: "EAAA" }, { name: "弗兰", letters: "CFCF" }, { name: "玛蒙", letters: "EDBF" }, { name: "将尼二", letters: "CECD" }],
+    "2221": [{ name: "尤尼", letters: "EDED" }, { name: "乔托", letters: "FDDD" }, { name: "风太", letters: "EDDF" }, { name: "入江正一", letters: "DAAA" }],
+    "2222": [{ name: "库洛姆", letters: "EFED" }, { name: "古里炎真", letters: "FCFE" }]
   };
 
-  // ---------- 角色评语文案 ----------
+  // ---------- 角色理解 ----------
   const roleDescriptions = {
-    "六道骸": "危险、难以接近，习惯站在暗处用那双看透一切的眼睛观察黑手党。",
-    "库洛姆": "你不习惯给别人添麻烦，偶尔依赖付大人，当真正危险来临时，你会打破所有的性情，变得异常坚定。",
-    "Reborn": "冷静、掌控全局，站在最高处俯视学生们的成长轨迹。",
-    "入江正一": "聪明但不喜强，知道该找谁帮忙，关键时刻能拉但平时会过度焦虑而腹痛。ps:多听点轻音乐预防焦虑。",
-    "雏菊": "神经质而危险，盛开的花下是随时会。",
-    "D·斯佩多": "深情而危险，疯子、叛徒、恶魔是外界对你的评价，但你内心只想蔡爱人复仇。",
-    "白兰": "世界是一场游戏，你是知道作头码的人。",
-    "狱寺隼人": "你习惯用行动表达自己，面对问题你会先观察判断再出手。不轻易相信别人，一但认定了某个人会用尽全力保护。",
-    "沢田纲吉": "向往平静的生活，却为守护而战，总在关键时刻挺身而出。",
-    "三浦春": "开朗、热情、偶尔冒失，想法单纯，从不把事情往坏处想，永远元气满满。",
-    "山本武": "做事靠直觉，运动天赋异襄，笑容是你的绝招也是保护色。",
-    "尤尼": "笑起来很治愈，拥有一双洞察命运的眼睛，会蔡别人着想，用奉献换取世界和平。ps:别吃白发男子递过来的棉花糖！",
-    "了平": "你拥有丰富的超直感但不会莽撞，有和领导气质不想管事，关键时刻会出手，平时喜欢摸鱼。",
-    "夏马尔": "平时看起来吊儿郎当，喜欢美女，能跑就跑，但认真起来实力很强，也有自己的原则。",
-    "斯帕纳": "遇到问题先分析，有礼瑶，苯重流程，比起交朋友，更想研究莫斯卡还能怎么改良。",
-    "弗兰": "上班喜欢划水、措鱼，但脑子转得比谁都快。",
-    "将尼二": "脑回路新奇，做事务实，全彭格列的武器在你的手中会焕发生机，即使性能上来说有些诡异。",
-    "川平": "永远在吃拉面，看似慵懒，只是确保世界不会在自己吃饱前毁灭。",
-    "拉尔·米尔奇": "战斗靠经验和判断，对自己狠，对学生更狠。",
-    "风太": "你相信身边有人会保护你，习惯依赖你信任的人。知道自己的局限，也懂得借力。",
-    "威尔第": "参与会干扰科学观测的准确性，盒子里面是什么？能研究吗？",
+    "斯库瓦罗": "剑就是一切，你的存在本身就是风暴。身为瓦利亚的剑帝，你用实力证明自己。",
     "可乐尼洛": "你有领导力和冲劲，讨厌把胜负交到别人手中，喜欢酷酷的东西，打不过就跑，留得青山在不怕没柴烧。",
-    "兰奇亚": "习惯守住位置，不轻易乱跑。曾经被背叛过，但依旧坚信心中所属。",
-    "伽马": "不抢风头，务实，不拒绝任何资源，明白自己的优势，也会把专业的事交给专业的人。",
-    "迪诺": "有领导力但不强势，信任伙伴，懂得借力，有你在的地方士气不会。",
-    "云雀恭弥": "真正的强者，不群聚也不废话。实力就是一切。",
+    "夏马尔": "平时看起来吊儿郎当，喜欢美女，能跑就跑，但认真起来实力很强，也有自己的原则。",
     "贝尔·菲戈尔": "只要不耽误我赚钱，你们爱怎么打怎么打，打不过就跑，跑得掉就是赢。",
-    "斯库瓦罗": "剑就是一切，你的存在本身就是风暴。",
-    "Xanxus": "愤怒是你的力量，双枪所指之处即是毁灭。",
-    "玛蒙": "金钱至上，没有报酬的活从来不接。",
-    "古里炎真": "沉默的大地之炎，承载着整个家族的仇恨与希望。",
-    "蓝波": "永远长不大的雷击牛，十年后却是可靠的守护者。",
-    "笹川了平": "极限！极限！热血就是你的代名词。",
     "沃田奈奈": "包容一切的爱，是全家最坚强的后盾。",
-    "京子": "永远相信他人的善意，是沢田纲吉心中的光。",
+    "笹川了平": "极限！极限！热血就是你的代名词。",
     "路斯利亚": "美丽与致命并存，永远相信爱情。",
-    "乔托": "开创时代的伟大首领，温柔而强大的灵魂。"
+    "蓝波": "永远长不大的雷击牛，十年后却是可靠的守护者。",
+    "Reborn": "冷静、掌控全局，站在最高处俯视学生们的成长轨迹。",
+    "Xanxus": "愤怒是你的力量，双枪所指之处即是毁灭。",
+    "白兰": "世界是一场游戏，你是知道作头码的人。",
+    "D·斯佩多": "深情而危险，疯子、叛徒、恶魔是外界对你的评价，但你内心只想为爱人复仇。",
+    "迪诺": "有领导力但不强势，信任伙伴，懂得借力，有你在的地方士气不会低。",
+    "山本武": "做事靠直觉，运动天赋异禀，笑容是你的绝招也是保护色。",
+    "三浦春": "开朗、热情、偶尔冒失，想法单纯，从不把事情往坏处想，永远元气满满。",
+    "云雀恭弥": "真正的强者，不群聚也不废话。实力就是一切。",
+    "拉尔": "战斗靠经验和判断，对自己狠，对学生更狠。",
+    "伽马": "不抢风头，务实，不拒绝任何资源，明白自己的优势，也会把专业的事交给专业的人。",
+    "狱寺隼人": "你习惯用行动表达自己，面对问题你会先观察判断再出手。不轻易相信别人，一但认定了某个人会用尽全力保护。",
+    "了平": "你拥有丰富的超直感但不会莽撞，有领导气质但不想管事，关键时刻会出手，平时喜欢摸鱼。",
+    "京子": "永远相信他人的善意，是沢田纲吉心中的光。",
+    "沢田纲吉": "向往平静的生活，却为守护而战，总在关键时刻挺身而出。",
+    "六道骸": "危险、难以接近，习惯站在暗处用那双看透一切的眼睛观察黑手党。",
+    "威尔第": "参与会干扰科学观测的准确性，盒子里面是什么？能研究吗？",
+    "川平": "永远在吃拉面，看似慵懒，只是确保世界不会在自己吃饱前毁灭。",
+    "斯帕纳": "遇到问题先分析，有礼貌，注重流程，比起交朋友，更想研究莫斯卡还能怎么改良。",
+    "弗兰": "上班喜欢划水摸鱼，但脑子转得比谁都快。",
+    "玛蒙": "金钱至上，没有报酬的活从来不接。",
+    "将尼二": "脑回路新奇，做事务实，彭格列的武器在你的手中会焕发生机，即使性能上来说有些诡异。",
+    "尤尼": "笑起来很治愈，拥有一双洞察命运的眼睛，会为别人着想，用奉献换取世界和平。ps:别吃白发男子递过来的棉花糖！",
+    "乔托": "开创时代的伟大首领，温柔而强大的灵魂。",
+    "风太": "你相信身边有人会保护你，习惯依赖你信任的人。知道自己的局限，也懂得借力。",
+    "入江正一": "聪明但不喜强，知道该找谁帮忙，关键时刻能扛但平时会过度焦虑而腹痛。ps:多听点轻音乐预防焦虑。",
+    "库洛姆": "你不习惯给别人添麻烦，偶尔依赖别人，当真正危险来临时，你会打破所有的性情，变得异常坚定。",
+    "古里炎真": "沉默的大地之炎，承载着整个家族的仇恨与希望。"
   };
 
-  // ---------- 提取所有角色条目 ----------
-  const allRoleEntries = [];
-  for (const [code, names] of Object.entries(roleMap)) {
-    for (const name of names) {
-      allRoleEntries.push({ code, name });
+  // ---------- 计算重合度最高的角色 ----------
+  function findBestMatch(userDigits, userLetters) {
+    const candidates = roleMap[userDigits] || [];
+    if (candidates.length === 0) return null;
+    let best = candidates[0];
+    let maxMatch = -1;
+    for (const candidate of candidates) {
+      let matchCount = 0;
+      for (let i = 0; i < 4; i++) {
+        if (userLetters[i] === candidate.letters[i]) matchCount++;
+      }
+      if (matchCount > maxMatch) {
+        maxMatch = matchCount;
+        best = candidate;
+      }
     }
+    return best;
   }
 
   // ---------- 状态 ----------
@@ -268,38 +277,15 @@
   const roleDesc = document.getElementById('roleDesc');
   const roleImg = document.getElementById('roleImg');
 
-  // ---------- 计算最佳匹配角色 ----------
-  function findBestMatch(userCode) {
-    let bestMatches = [];
-    let maxMatchCount = -1;
-    for (const entry of allRoleEntries) {
-      let matchCount = 0;
-      for (let i = 0; i < 4; i++) {
-        if (userCode[i] === entry.code[i]) matchCount++;
-      }
-      if (matchCount > maxMatchCount) {
-        maxMatchCount = matchCount;
-        bestMatches = [entry.name];
-      } else if (matchCount === maxMatchCount) {
-        bestMatches.push(entry.name);
-      }
-    }
-    return bestMatches[Math.floor(Math.random() * bestMatches.length)];
-  }
-
-  // ---------- 渲染当前题 ----------
   function render() {
-    if (current >= questions.length) {
-      showResult();
-      return;
-    }
+    if (current >= questions.length) { showResult(); return; }
     const q = questions[current];
     qText.textContent = q.q;
     optionsDiv.innerHTML = '';
-    q.options.forEach((opt, idx) => {
+    q.options.forEach((optText, idx) => {
       const div = document.createElement('div');
       div.className = 'opt';
-      div.innerHTML = `<span class="letter">${opt.label}</span><span>${opt.text}</span>`;
+      div.innerHTML = `<span class="letter">${String.fromCharCode(65 + idx)}</span><span>${optText.substring(2)}</span>`;
       div.dataset.idx = idx;
       div.onclick = () => selectOption(idx);
       optionsDiv.appendChild(div);
@@ -324,43 +310,38 @@
     nextBtn.disabled = false;
   }
 
-  // ---------- 显示结果 ----------
   function showResult() {
-    const userCode = codeDigits.join('');
-    const result = findBestMatch(userCode);
+    const codeStr = codeDigits.join('');
+    const userLetters = answers.map(idx => String.fromCharCode(65 + idx)).join('');
+    const best = findBestMatch(codeStr, userLetters);
+    const role = best ? best.name : "未知角色";
 
     qText.textContent = '🎉 测试完成！';
     optionsDiv.innerHTML = '';
     nextBtn.style.display = 'none';
     resultBox.style.display = 'block';
+    roleName.textContent = role;
+    roleDesc.textContent = roleDescriptions[role] || '你是彭格列家族中不可或缺的一员。';
 
-    roleName.textContent = result;
-    roleDesc.textContent = roleDescriptions[result] || '你是彭格列家族中不可或缺的一员。';
-
-    const imgUrl = `https://kjppp123.github.io/family-test/${result}.jpg`;
-    roleImg.src = imgUrl;
-    roleImg.onload = function() { this.style.display = 'block'; };
-    roleImg.onerror = function() { this.style.display = 'none'; };
-
+    if (role === "山本武") {
+      const imgUrl = `https://kjppp123.github.io/family-test/山本武.jpg`;
+      roleImg.src = imgUrl;
+      roleImg.onload = function() { this.style.display = 'block'; };
+      roleImg.onerror = function() { this.style.display = 'none'; };
+    } else {
+      roleImg.style.display = 'none';
+    }
     fill.style.width = '100%';
     counter.textContent = '完成';
   }
 
-  // ---------- 下一题 ----------
   nextBtn.onclick = () => {
-    if (answers[current] === undefined) {
-      alert('请先选择一个选项～');
-      return;
-    }
+    if (answers[current] === undefined) { alert('请先选择一个选项～'); return; }
     current++;
-    if (current >= questions.length) {
-      showResult();
-    } else {
-      render();
-    }
+    if (current >= questions.length) showResult();
+    else render();
   };
 
-  // ---------- 重置 ----------
   resetBtn.onclick = () => {
     current = 0;
     answers = [];
@@ -369,7 +350,6 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // ---------- 启动 ----------
   render();
 </script>
 </body>
