@@ -11,15 +11,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    /* 外框：全员.jpg */
     background-image: url('https://kjppp123.github.io/family-test/全员.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    padding: 20px;
   }
-  /* 外框半透明遮罩，让图案更融合 */
   body::before {
     content: '';
     position: fixed;
@@ -30,34 +28,56 @@
     background: rgba(0, 0, 0, 0.55);
     z-index: 0;
   }
-
   .container {
     position: relative;
     z-index: 1;
     max-width: 500px;
     width: 100%;
-    /* 内框：黑粉主题（黑多粉少） */
     background: rgba(18, 10, 20, 0.92);
     backdrop-filter: blur(12px);
     border-radius: 40px;
-    padding: 28px 20px 32px;
+    padding: 32px 24px 36px;
     border: 1px solid rgba(233, 30, 99, 0.25);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 60px rgba(233, 30, 99, 0.06);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7);
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
   }
-  h1 { font-size: 24px; font-weight: 700; color: #f5e6f0; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
-  h1 small { font-size: 14px; font-weight: 400; color: #b88aaa; background: rgba(233, 30, 99, 0.2); padding: 2px 14px; border-radius: 30px; }
-  .sub { text-align: center; color: #b088aa; font-size: 13px; margin: 4px 0 20px; opacity: 0.8; }
-  .progress-area { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+  .hidden { display: none !important; }
+
+  /* ----- 封面 ----- */
+  .cover { text-align: center; padding: 10px 0; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .cover h1 { font-size: 34px; font-weight: 700; color: #f5e6f0; line-height: 1.3; margin-bottom: 4px; }
+  .cover .sub { font-size: 15px; color: #b088aa; margin-bottom: 36px; opacity: 0.8; }
+  .cover .btn { width: 80%; margin: 0 auto; font-size: 20px; padding: 16px; }
+
+  /* ----- 统一的顶部（答题区 & 结果区） ----- */
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #f5e6f0;
+    text-align: center;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+  .section-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
   .track { flex: 1; height: 6px; background: rgba(200, 150, 180, 0.2); border-radius: 10px; overflow: hidden; }
   .fill { height: 100%; width: 0%; background: linear-gradient(90deg, #e91e63, #9c27b0); border-radius: 10px; transition: width 0.4s ease; }
-  .counter { font-size: 13px; font-weight: 600; color: #f5e6f0; background: rgba(233, 30, 99, 0.25); padding: 2px 14px; border-radius: 30px; white-space: nowrap; }
-  .q-text { font-size: 19px; font-weight: 600; color: #f5e6f0; line-height: 1.5; margin-bottom: 20px; min-height: 3.2rem; padding: 0 2px; }
-  .options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+  .progress-counter { font-size: 13px; font-weight: 600; color: #f5e6f0; background: rgba(233, 30, 99, 0.25); padding: 2px 14px; border-radius: 30px; white-space: nowrap; }
+
+  /* ----- 答题区内容 ----- */
+  .q-text { font-size: 19px; font-weight: 600; color: #f5e6f0; line-height: 1.5; margin-bottom: 22px; min-height: 3.2rem; padding: 0 2px; }
+  .options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; flex: 1; }
   .opt {
     background: rgba(40, 20, 40, 0.6);
     border: 1px solid rgba(200, 150, 180, 0.15);
     border-radius: 50px;
-    padding: 12px 18px;
+    padding: 14px 20px;
     font-size: 15px;
     color: #f0e0ee;
     cursor: pointer;
@@ -88,8 +108,9 @@
     background: #e91e63;
     color: #fff;
   }
+  .btn-group { display: flex; gap: 12px; margin-top: 4px; }
+  .btn-group .btn { flex: 1; }
   .btn {
-    width: 100%;
     padding: 14px;
     border: none;
     border-radius: 50px;
@@ -100,65 +121,102 @@
     cursor: pointer;
     transition: all 0.2s;
     box-shadow: 0 4px 16px rgba(233, 30, 99, 0.2);
+    text-align: center;
   }
   .btn:active { transform: scale(0.96); opacity: 0.9; }
   .btn:disabled { opacity: 0.4; transform: none; pointer-events: none; }
-  .result-box {
-    margin-top: 20px;
-    padding: 24px 20px 20px;
-    background: rgba(30, 15, 30, 0.7);
-    border-radius: 28px;
-    text-align: center;
-    display: none;
-    border: 1px solid rgba(233, 30, 99, 0.15);
+  .btn-secondary {
+    background: rgba(200, 150, 180, 0.15);
+    box-shadow: none;
+    color: #d0b8cc;
   }
-  .result-box .role-img {
-    width: 120px;
-    height: 120px;
+  .btn-secondary:active { background: rgba(200, 150, 180, 0.25); }
+
+  /* ----- 结果区内容（宽框+大字） ----- */
+  .result-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .result-content .result-sub {
+    font-size: 22px;
+    font-weight: 700;
+    color: #d0b8cc;
+    text-align: left;
+    margin-bottom: 12px;
+  }
+  .result-content .role-img {
+    width: 130px;
+    height: 130px;
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid #e91e63;
     display: none;
-    margin: 0 auto 10px;
+    margin: 0 auto 12px;
     box-shadow: 0 4px 20px rgba(233, 30, 99, 0.2);
   }
-  .result-box .role-name {
-    font-size: 36px;
+  .result-content .role-name {
+    font-size: 42px;
     font-weight: 800;
-    color: #f5e6f0;
-    margin: 4px 0 10px;
+    color: #e91e63;
+    text-align: center;
     letter-spacing: 2px;
+    margin-bottom: 16px;
   }
-  .result-box .role-desc {
-    font-size: 15px;
+  .result-content .role-desc {
+    font-size: 17px;
     color: #d0b8cc;
-    line-height: 1.7;
-    text-align: left;
+    line-height: 1.8;
+    text-align: center;
     background: rgba(0, 0, 0, 0.3);
-    padding: 14px 16px;
+    padding: 18px 20px;
     border-radius: 20px;
     white-space: pre-wrap;
     word-break: break-word;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
   }
-  .reset-btn { margin-top: 16px; background: rgba(200, 150, 180, 0.15); color: #d0b8cc; box-shadow: none; }
-  .reset-btn:active { transform: scale(0.96); }
 </style>
 
 <div class="container" id="app">
-  <h1>📖 测测你是<br>家庭教师里的谁 <small>by 柯基胖屁屁</small></h1>
-  <div class="sub">4道题 · 看看你的角色契合度</div>
-  <div class="progress-area">
-    <div class="track"><div class="fill" id="fill"></div></div>
-    <span class="counter" id="counter">1/4</span>
+  <!-- 封面 -->
+  <div id="cover" class="cover">
+    <h1>测测你是<br>家庭教师里的谁？</h1>
+    <div class="sub">by 柯基胖屁屁</div>
+    <button class="btn" id="startBtn">开始测试</button>
   </div>
-  <div class="q-text" id="qText">加载中...</div>
-  <div class="options" id="options"></div>
-  <button class="btn" id="nextBtn">下一题 →</button>
-  <div class="result-box" id="resultBox">
-    <img class="role-img" id="roleImg" src="" alt="角色头像">
-    <div class="role-name" id="roleName">??</div>
-    <div class="role-desc" id="roleDesc"></div>
-    <button class="btn reset-btn" id="resetBtn">🔄 重新测试</button>
+
+  <!-- 答题区 -->
+  <div id="quizArea" class="hidden">
+    <div class="section-title">测测你是家庭教师里的谁</div>
+    <div class="section-progress">
+      <div class="track"><div class="fill" id="fill"></div></div>
+      <span class="progress-counter" id="counter">1/4</span>
+    </div>
+    <div class="q-text" id="qText">加载中...</div>
+    <div class="options" id="options"></div>
+    <div class="btn-group" id="btnGroup">
+      <button class="btn btn-secondary" id="prevBtn">上一题</button>
+      <button class="btn" id="nextBtn">下一题</button>
+    </div>
+  </div>
+
+  <!-- 结果区 -->
+  <div id="resultArea" class="hidden">
+    <div class="section-title">测测你是家庭教师里的谁</div>
+    <div class="section-progress">
+      <div class="track"><div class="fill" id="resultFill" style="width:100%;"></div></div>
+      <span class="progress-counter">完成</span>
+    </div>
+    <div class="result-content">
+      <div class="result-sub">你的角色是：</div>
+      <img class="role-img" id="roleImg" src="" alt="角色头像">
+      <div class="role-name" id="roleName">??</div>
+      <div class="role-desc" id="roleDesc"></div>
+      <button class="btn" id="resetBtn">🔄 重新测试</button>
+    </div>
   </div>
 </div>
 
@@ -203,7 +261,6 @@
     "2222": [{ name: "库洛姆", letters: "EFED" }, { name: "古里炎真", letters: "FCFE" }]
   };
 
-  // ---------- 角色理解 ----------
   const roleDescriptions = {
     "斯库瓦罗": "剑就是一切，你的存在本身就是风暴。身为瓦利亚的剑帝，你用实力证明自己。",
     "可乐尼洛": "你有领导力和冲劲，讨厌把胜负交到别人手中，喜欢酷酷的东西，打不过就跑，留得青山在不怕没柴烧。",
@@ -242,7 +299,6 @@
     "古里炎真": "沉默的大地之炎，承载着整个家族的仇恨与希望。"
   };
 
-  // ---------- 计算重合度最高的角色 ----------
   function findBestMatch(userDigits, userLetters) {
     const candidates = roleMap[userDigits] || [];
     if (candidates.length === 0) return null;
@@ -261,21 +317,58 @@
     return best;
   }
 
-  // ---------- 状态 ----------
+  // ---------- DOM 元素 ----------
+  const cover = document.getElementById('cover');
+  const quizArea = document.getElementById('quizArea');
+  const resultArea = document.getElementById('resultArea');
+  const startBtn = document.getElementById('startBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const qText = document.getElementById('qText');
+  const optionsDiv = document.getElementById('options');
+  const fill = document.getElementById('fill');
+  const counter = document.getElementById('counter');
+  const roleName = document.getElementById('roleName');
+  const roleDesc = document.getElementById('roleDesc');
+  const roleImg = document.getElementById('roleImg');
+
   let current = 0;
   let answers = [];
   let codeDigits = [];
 
-  const qText = document.getElementById('qText');
-  const optionsDiv = document.getElementById('options');
-  const nextBtn = document.getElementById('nextBtn');
-  const resetBtn = document.getElementById('resetBtn');
-  const fill = document.getElementById('fill');
-  const counter = document.getElementById('counter');
-  const resultBox = document.getElementById('resultBox');
-  const roleName = document.getElementById('roleName');
-  const roleDesc = document.getElementById('roleDesc');
-  const roleImg = document.getElementById('roleImg');
+  function showCover() {
+    cover.classList.remove('hidden');
+    quizArea.classList.add('hidden');
+    resultArea.classList.add('hidden');
+  }
+
+  function showQuiz() {
+    cover.classList.add('hidden');
+    quizArea.classList.remove('hidden');
+    resultArea.classList.add('hidden');
+    render();
+  }
+
+  function showResult() {
+    cover.classList.add('hidden');
+    quizArea.classList.add('hidden');
+    resultArea.classList.remove('hidden');
+    const codeStr = codeDigits.join('');
+    const userLetters = answers.map(idx => String.fromCharCode(65 + idx)).join('');
+    const best = findBestMatch(codeStr, userLetters);
+    const role = best ? best.name : "未知角色";
+    roleName.textContent = role;
+    roleDesc.textContent = roleDescriptions[role] || '你是彭格列家族中不可或缺的一员。';
+    if (role === "山本武") {
+      const imgUrl = `https://kjppp123.github.io/family-test/山本武.jpg`;
+      roleImg.src = imgUrl;
+      roleImg.onload = function() { this.style.display = 'block'; };
+      roleImg.onerror = function() { this.style.display = 'none'; };
+    } else {
+      roleImg.style.display = 'none';
+    }
+  }
 
   function render() {
     if (current >= questions.length) { showResult(); return; }
@@ -296,8 +389,13 @@
     }
     fill.style.width = ((current / questions.length) * 100) + '%';
     counter.textContent = `${current+1}/${questions.length}`;
-    resultBox.style.display = 'none';
-    nextBtn.style.display = 'block';
+
+    prevBtn.style.display = current === 0 ? 'none' : 'block';
+    if (current === questions.length - 1) {
+      nextBtn.textContent = '查看结果';
+    } else {
+      nextBtn.textContent = '下一题';
+    }
     nextBtn.disabled = (answers[current] === undefined);
   }
 
@@ -310,47 +408,35 @@
     nextBtn.disabled = false;
   }
 
-  function showResult() {
-    const codeStr = codeDigits.join('');
-    const userLetters = answers.map(idx => String.fromCharCode(65 + idx)).join('');
-    const best = findBestMatch(codeStr, userLetters);
-    const role = best ? best.name : "未知角色";
-
-    qText.textContent = '🎉 测试完成！';
-    optionsDiv.innerHTML = '';
-    nextBtn.style.display = 'none';
-    resultBox.style.display = 'block';
-    roleName.textContent = role;
-    roleDesc.textContent = roleDescriptions[role] || '你是彭格列家族中不可或缺的一员。';
-
-    if (role === "山本武") {
-      const imgUrl = `https://kjppp123.github.io/family-test/山本武.jpg`;
-      roleImg.src = imgUrl;
-      roleImg.onload = function() { this.style.display = 'block'; };
-      roleImg.onerror = function() { this.style.display = 'none'; };
-    } else {
-      roleImg.style.display = 'none';
-    }
-    fill.style.width = '100%';
-    counter.textContent = '完成';
-  }
-
-  nextBtn.onclick = () => {
-    if (answers[current] === undefined) { alert('请先选择一个选项～'); return; }
-    current++;
-    if (current >= questions.length) showResult();
-    else render();
-  };
+  // ---------- 事件绑定 ----------
+  startBtn.onclick = showQuiz;
 
   resetBtn.onclick = () => {
     current = 0;
     answers = [];
     codeDigits = [];
-    render();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    showCover();
   };
 
-  render();
+  prevBtn.onclick = () => {
+    if (current > 0) {
+      current--;
+      render();
+    }
+  };
+
+  nextBtn.onclick = () => {
+    if (answers[current] === undefined) { alert('请先选择一个选项～'); return; }
+    current++;
+    if (current >= questions.length) {
+      showResult();
+    } else {
+      render();
+    }
+  };
+
+  // ---------- 启动 ----------
+  showCover();
 </script>
 </body>
 </html>
