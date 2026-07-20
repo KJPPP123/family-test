@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>测测你是家庭教师里的谁</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
   body {
@@ -210,7 +216,7 @@
 </div>
 
 <script>
-  // ---------- 4道原题（选项分开存储：字母 + 内容） ----------
+  // ---------- 4道原题 ----------
   const questions = [
     {
       q: "棒球场上，你最想守哪个位置？",
@@ -357,7 +363,6 @@
   // ---------- 选择选项 ----------
   function selectOption(idx) {
     answers[current] = idx;
-    // idx 0,1,2 → 1；3,4,5 → 2
     codeDigits[current] = idx < 3 ? 1 : 2;
 
     document.querySelectorAll('.opt').forEach((el, i) => {
@@ -411,3 +416,5 @@
   // ---------- 启动 ----------
   render();
 </script>
+</body>
+</html>
