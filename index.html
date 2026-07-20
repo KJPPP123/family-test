@@ -24,76 +24,15 @@
     border: 1px solid rgba(255, 215, 175, 0.6);
     box-shadow: 0 16px 48px rgba(180, 100, 60, 0.2);
   }
-  h1 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #5a3e2b;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  h1 small {
-    font-size: 14px;
-    font-weight: 400;
-    color: #8b6b50;
-    background: rgba(255,215,175,0.4);
-    padding: 2px 14px;
-    border-radius: 30px;
-  }
-  .sub {
-    text-align: center;
-    color: #7a5f48;
-    font-size: 13px;
-    margin: 4px 0 20px;
-    opacity: 0.8;
-  }
-  .progress-area {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 22px;
-  }
-  .track {
-    flex: 1;
-    height: 6px;
-    background: rgba(200, 160, 130, 0.3);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #e8a87c, #d4846a);
-    border-radius: 10px;
-    transition: width 0.4s ease;
-  }
-  .counter {
-    font-size: 13px;
-    font-weight: 600;
-    color: #5a3e2b;
-    background: rgba(255,215,175,0.5);
-    padding: 2px 14px;
-    border-radius: 30px;
-    white-space: nowrap;
-  }
-  .q-text {
-    font-size: 19px;
-    font-weight: 600;
-    color: #3f2c1e;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    min-height: 3.2rem;
-    padding: 0 2px;
-  }
-  .options {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 24px;
-  }
+  h1 { font-size: 24px; font-weight: 700; color: #5a3e2b; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+  h1 small { font-size: 14px; font-weight: 400; color: #8b6b50; background: rgba(255,215,175,0.4); padding: 2px 14px; border-radius: 30px; }
+  .sub { text-align: center; color: #7a5f48; font-size: 13px; margin: 4px 0 20px; opacity: 0.8; }
+  .progress-area { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+  .track { flex: 1; height: 6px; background: rgba(200, 160, 130, 0.3); border-radius: 10px; overflow: hidden; }
+  .fill { height: 100%; width: 0%; background: linear-gradient(90deg, #e8a87c, #d4846a); border-radius: 10px; transition: width 0.4s ease; }
+  .counter { font-size: 13px; font-weight: 600; color: #5a3e2b; background: rgba(255,215,175,0.5); padding: 2px 14px; border-radius: 30px; white-space: nowrap; }
+  .q-text { font-size: 19px; font-weight: 600; color: #3f2c1e; line-height: 1.5; margin-bottom: 20px; min-height: 3.2rem; padding: 0 2px; }
+  .options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
   .opt {
     background: rgba(255, 235, 215, 0.6);
     border: 1.5px solid rgba(200, 160, 130, 0.3);
@@ -109,8 +48,7 @@
   }
   .opt:active { transform: scale(0.97); }
   .opt .letter {
-    width: 28px;
-    height: 28px;
+    width: 28px; height: 28px;
     border-radius: 50%;
     background: rgba(200, 160, 130, 0.3);
     display: flex;
@@ -121,11 +59,7 @@
     color: #5a3e2b;
     flex-shrink: 0;
   }
-  .opt.selected {
-    background: #f5d5b8;
-    border-color: #c28a6a;
-    box-shadow: 0 2px 12px rgba(180, 100, 60, 0.15);
-  }
+  .opt.selected { background: #f5d5b8; border-color: #c28a6a; box-shadow: 0 2px 12px rgba(180, 100, 60, 0.15); }
   .btn {
     width: 100%;
     padding: 14px;
@@ -140,79 +74,64 @@
     box-shadow: 0 4px 16px rgba(180, 100, 60, 0.25);
   }
   .btn:active { transform: scale(0.96); opacity: 0.9; }
-  .btn:disabled {
-    opacity: 0.5;
-    transform: none;
-    pointer-events: none;
-  }
+  .btn:disabled { opacity: 0.5; transform: none; pointer-events: none; }
   .result-box {
     margin-top: 20px;
-    padding: 30px 20px 24px;
+    padding: 24px 20px 24px;
     background: rgba(255, 235, 215, 0.6);
     border-radius: 28px;
     text-align: center;
     display: none;
     border: 1px solid rgba(200, 160, 130, 0.3);
   }
-  .result-box .role {
+  .result-box .role-name {
     font-size: 38px;
     font-weight: 800;
     color: #3f2c1e;
-    margin: 8px 0 2px;
+    margin: 4px 0 12px;
     letter-spacing: 2px;
   }
-  .result-box .label {
-    font-size: 16px;
-    color: #8b6b50;
-    font-weight: 500;
+  .result-box .role-desc {
+    font-size: 15px;
+    color: #4a3a2a;
+    line-height: 1.7;
+    text-align: left;
+    background: rgba(255,248,235,0.5);
+    padding: 16px 18px;
+    border-radius: 20px;
+    margin-top: 4px;
+    white-space: pre-wrap;
+    word-break: break-word;
   }
-  .result-box .sub-info {
-    font-size: 14px;
-    color: #7a5f48;
-    margin-top: 12px;
-    line-height: 1.6;
+  .result-box .role-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #c28a6a;
+    display: none;  /* 默认隐藏，有图片才显示 */
+    margin: 0 auto 12px;
   }
-  .reset-btn {
-    margin-top: 18px;
-    background: rgba(200, 160, 130, 0.3);
-    color: #5a3e2b;
-    box-shadow: none;
-    font-size: 14px;
-  }
+  .reset-btn { margin-top: 18px; background: rgba(200, 160, 130, 0.3); color: #5a3e2b; box-shadow: none; font-size: 14px; }
   .reset-btn:active { transform: scale(0.96); }
-  .footnote {
-    text-align: center;
-    font-size: 11px;
-    color: #a88872;
-    margin-top: 16px;
-    opacity: 0.7;
-  }
 </style>
 
 <div class="container" id="app">
-  <h1>
-    📖 测测你是<br>家庭教师里的谁
-    <small>by 柯基胖屁屁</small>
-  </h1>
+  <h1>📖 测测你是<br>家庭教师里的谁 <small>by 柯基胖屁屁</small></h1>
   <div class="sub">4道题 · 看看你的角色契合度</div>
-
   <div class="progress-area">
     <div class="track"><div class="fill" id="fill"></div></div>
     <span class="counter" id="counter">1/4</span>
   </div>
-
   <div class="q-text" id="qText">加载中...</div>
   <div class="options" id="options"></div>
-
   <button class="btn" id="nextBtn">下一题 →</button>
-
   <div class="result-box" id="resultBox">
-    <div class="label">✨ 你是</div>
-    <div class="role" id="roleDisplay">??</div>
-    <div class="sub-info" id="extraInfo"></div>
+    <img class="role-img" id="roleImg" src="" alt="角色头像">
+    <div class="role-name" id="roleName">??</div>
+    <div class="role-desc" id="roleDesc"></div>
     <button class="btn reset-btn" id="resetBtn">🔄 重新测试</button>
   </div>
-  <div class="footnote">A/B/C → 1 &nbsp;·&nbsp; D/E/F → 2</div>
 </div>
 
 <script>
@@ -274,17 +193,58 @@
     "1212": ["白兰", "D·斯佩多"],
     "1221": ["迪诺"],
     "1222": ["山本武", "三浦春"],
-    "2111": ["云雀恭弥", "拉尔", "伽马"],
+    "2111": ["云雀恭弥", "拉尔·米尔奇", "伽马"],
     "2112": ["狱寺隼人"],
     "2121": ["了平", "京子"],
-    "2122": ["沃田纲吉"],
+    "2122": ["沢田纲吉"],
     "2211": ["六道骸", "威尔第", "川平"],
     "2212": ["斯帕纳", "弗兰", "玛蒙", "将尼二"],
     "2221": ["尤尼", "乔托", "风太", "入江正一"],
     "2222": ["库洛姆", "古里炎真"]
   };
 
-  // 提取所有角色条目
+  // ---------- 角色评语文案 ----------
+  const roleDescriptions = {
+    "六道骸": "危险、难以接近，习惯站在暗处用那双看透一切的眼睛观察黑手党。",
+    "库洛姆": "你不习惯给别人添麻烦，偶尔依赖付大人，当真正危险来临时，你会打破所有的性情，变得异常坚定。",
+    "Reborn": "冷静、掌控全局，站在最高处俯视学生们的成长轨迹。",
+    "入江正一": "聪明但不喜强，知道该找谁帮忙，关键时刻能拉但平时会过度焦虑而腹痛。ps:多听点轻音乐预防焦虑。",
+    "雏菊": "神经质而危险，盛开的花下是随时会。",
+    "D·斯佩多": "深情而危险，疯子、叛徒、恶魔是外界对你的评价，但你内心只想蔡爱人复仇。",
+    "白兰": "世界是一场游戏，你是知道作头码的人。",
+    "狱寺隼人": "你习惯用行动表达自己，面对问题你会先观察判断再出手。不轻易相信别人，一但认定了某个人会用尽全力保护。",
+    "沢田纲吉": "向往平静的生活，却为守护而战，总在关键时刻挺身而出。",
+    "三浦春": "开朗、热情、偶尔冒失，想法单纯，从不把事情往坏处想，永远元气满满。",
+    "山本武": "做事靠直觉，运动天赋异襄，笑容是你的绝招也是保护色。",
+    "尤尼": "笑起来很治愈，拥有一双洞察命运的眼睛，会蔡别人着想，用奉献换取世界和平。ps:别吃白发男子递过来的棉花糖！",
+    "了平": "你拥有丰富的超直感但不会莽撞，有和领导气质不想管事，关键时刻会出手，平时喜欢摸鱼。",
+    "夏马尔": "平时看起来吊儿郎当，喜欢美女，能跑就跑，但认真起来实力很强，也有自己的原则。",
+    "斯帕纳": "遇到问题先分析，有礼瑶，苯重流程，比起交朋友，更想研究莫斯卡还能怎么改良。",
+    "弗兰": "上班喜欢划水、措鱼，但脑子转得比谁都快。",
+    "将尼二": "脑回路新奇，做事务实，全彭格列的武器在你的手中会焕发生机，即使性能上来说有些诡异。",
+    "川平": "永远在吃拉面，看似慵懒，只是确保世界不会在自己吃饱前毁灭。",
+    "拉尔·米尔奇": "战斗靠经验和判断，对自己狠，对学生更狠。",
+    "风太": "你相信身边有人会保护你，习惯依赖你信任的人。知道自己的局限，也懂得借力。",
+    "威尔第": "参与会干扰科学观测的准确性，盒子里面是什么？能研究吗？",
+    "可乐尼洛": "你有领导力和冲劲，讨厌把胜负交到别人手中，喜欢酷酷的东西，打不过就跑，留得青山在不怕没柴烧。",
+    "兰奇亚": "习惯守住位置，不轻易乱跑。曾经被背叛过，但依旧坚信心中所属。",
+    "伽马": "不抢风头，务实，不拒绝任何资源，明白自己的优势，也会把专业的事交给专业的人。",
+    "迪诺": "有领导力但不强势，信任伙伴，懂得借力，有你在的地方士气不会。",
+    "云雀恭弥": "真正的强者，不群聚也不废话。实力就是一切。",
+    "贝尔·菲戈尔": "只要不耽误我赚钱，你们爱怎么打怎么打，打不过就跑，跑得掉就是赢。",
+    "斯库瓦罗": "剑就是一切，你的存在本身就是风暴。",
+    "Xanxus": "愤怒是你的力量，双枪所指之处即是毁灭。",
+    "玛蒙": "金钱至上，没有报酬的活从来不接。",
+    "古里炎真": "沉默的大地之炎，承载着整个家族的仇恨与希望。",
+    "蓝波": "永远长不大的雷击牛，十年后却是可靠的守护者。",
+    "笹川了平": "极限！极限！热血就是你的代名词。",
+    "沃田奈奈": "包容一切的爱，是全家最坚强的后盾。",
+    "京子": "永远相信他人的善意，是沢田纲吉心中的光。",
+    "路斯利亚": "美丽与致命并存，永远相信爱情。",
+    "乔托": "开创时代的伟大首领，温柔而强大的灵魂。"
+  };
+
+  // ---------- 提取所有角色条目 ----------
   const allRoleEntries = [];
   for (const [code, names] of Object.entries(roleMap)) {
     for (const name of names) {
@@ -304,14 +264,14 @@
   const fill = document.getElementById('fill');
   const counter = document.getElementById('counter');
   const resultBox = document.getElementById('resultBox');
-  const roleDisplay = document.getElementById('roleDisplay');
-  const extraInfo = document.getElementById('extraInfo');
+  const roleName = document.getElementById('roleName');
+  const roleDesc = document.getElementById('roleDesc');
+  const roleImg = document.getElementById('roleImg');
 
   // ---------- 计算最佳匹配角色 ----------
   function findBestMatch(userCode) {
     let bestMatches = [];
     let maxMatchCount = -1;
-
     for (const entry of allRoleEntries) {
       let matchCount = 0;
       for (let i = 0; i < 4; i++) {
@@ -324,7 +284,6 @@
         bestMatches.push(entry.name);
       }
     }
-
     return bestMatches[Math.floor(Math.random() * bestMatches.length)];
   }
 
@@ -334,11 +293,9 @@
       showResult();
       return;
     }
-
     const q = questions[current];
     qText.textContent = q.q;
     optionsDiv.innerHTML = '';
-
     q.options.forEach((opt, idx) => {
       const div = document.createElement('div');
       div.className = 'opt';
@@ -347,12 +304,10 @@
       div.onclick = () => selectOption(idx);
       optionsDiv.appendChild(div);
     });
-
     if (answers[current] !== undefined) {
       const btns = optionsDiv.querySelectorAll('.opt');
       btns[answers[current]]?.classList.add('selected');
     }
-
     fill.style.width = ((current / questions.length) * 100) + '%';
     counter.textContent = `${current+1}/${questions.length}`;
     resultBox.style.display = 'none';
@@ -360,11 +315,9 @@
     nextBtn.disabled = (answers[current] === undefined);
   }
 
-  // ---------- 选择选项 ----------
   function selectOption(idx) {
     answers[current] = idx;
     codeDigits[current] = idx < 3 ? 1 : 2;
-
     document.querySelectorAll('.opt').forEach((el, i) => {
       el.classList.toggle('selected', i === idx);
     });
@@ -381,10 +334,18 @@
     nextBtn.style.display = 'none';
     resultBox.style.display = 'block';
 
-    roleDisplay.textContent = result;
+    roleName.textContent = result;
+    roleDesc.textContent = roleDescriptions[result] || '你是彭格列家族中不可或缺的一员。';
 
-    const optLabels = answers.map(idx => String.fromCharCode(65 + idx));
-    extraInfo.textContent = `你的选择：${optLabels.join(' · ')}`;
+    // 尝试加载图片，如果图片存在就显示，不存在就隐藏
+    const imgUrl = `https://kjppp123.github.io/family-test/${result}.jpg`;
+    roleImg.src = imgUrl;
+    roleImg.onload = function() {
+      this.style.display = 'block';
+    };
+    roleImg.onerror = function() {
+      this.style.display = 'none';
+    };
 
     fill.style.width = '100%';
     counter.textContent = '完成';
