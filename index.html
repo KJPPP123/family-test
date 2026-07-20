@@ -109,7 +109,7 @@
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid #c28a6a;
-    display: none;  /* 默认隐藏，有图片才显示 */
+    display: none;
     margin: 0 auto 12px;
   }
   .reset-btn { margin-top: 18px; background: rgba(200, 160, 130, 0.3); color: #5a3e2b; box-shadow: none; font-size: 14px; }
@@ -183,7 +183,7 @@
     }
   ];
 
-  // ---------- 角色映射表 ----------
+  // ---------- 角色映射表（已修正山本武和三浦春） ----------
   const roleMap = {
     "1111": ["斯库瓦罗"],
     "1112": ["可乐尼洛", "夏马尔", "贝尔·菲戈尔"],
@@ -192,11 +192,11 @@
     "1211": ["Reborn", "Xanxus"],
     "1212": ["白兰", "D·斯佩多"],
     "1221": ["迪诺"],
-    "1222": ["山本武", "三浦春"],
+    "1222": ["三浦春"],          // ✅ 已修正：CEEE → 三浦春
     "2111": ["云雀恭弥", "拉尔·米尔奇", "伽马"],
     "2112": ["狱寺隼人"],
     "2121": ["了平", "京子"],
-    "2122": ["沢田纲吉"],
+    "2122": ["山本武"],          // ✅ 已修正：DADD → 山本武
     "2211": ["六道骸", "威尔第", "川平"],
     "2212": ["斯帕纳", "弗兰", "玛蒙", "将尼二"],
     "2221": ["尤尼", "乔托", "风太", "入江正一"],
@@ -337,15 +337,10 @@
     roleName.textContent = result;
     roleDesc.textContent = roleDescriptions[result] || '你是彭格列家族中不可或缺的一员。';
 
-    // 尝试加载图片，如果图片存在就显示，不存在就隐藏
     const imgUrl = `https://kjppp123.github.io/family-test/${result}.jpg`;
     roleImg.src = imgUrl;
-    roleImg.onload = function() {
-      this.style.display = 'block';
-    };
-    roleImg.onerror = function() {
-      this.style.display = 'none';
-    };
+    roleImg.onload = function() { this.style.display = 'block'; };
+    roleImg.onerror = function() { this.style.display = 'none'; };
 
     fill.style.width = '100%';
     counter.textContent = '完成';
